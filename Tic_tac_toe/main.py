@@ -1,14 +1,15 @@
 def tic_tac_toe():
+    game_board = [" "," "," "," "," "," "," "," "," "]
     board = ["u1","u2","u3","m1","m2","m3","d1","d2","d3"]
     game_end = False
     win_comb = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
 
     def board_draw():
-        print(str(board[0]) + "|" + str(board[1]) + "|" + str(board[2]))
-        print("--------")
-        print(str(board[3]) + "|" + str(board[4]) + "|" + str(board[5]))
-        print("--------")
-        print(str(board[6]) + "|" + str(board[7]) + "|" + str(board[8]))
+        print(board[0] + "|" + board[1] + "|" + board[2]+"    "+game_board[0] + "|" + game_board[1] + "|" + game_board[2])
+        print("--------    -----")
+        print(board[3] + "|" + board[4] + "|" + board[5]+"    "+game_board[3] + "|" + game_board[4] + "|" + game_board[5])
+        print("--------    -----")
+        print(board[6] + "|" + board[7] + "|" + board[8]+"    "+game_board[6] + "|" + game_board[7] + "|" + game_board[8])
         print()
 
     def player_selection():
@@ -25,32 +26,32 @@ def tic_tac_toe():
 
     def x_play():
         n = player_selection()
-        if board[n] == "X" or board[n] == "O":
+        if game_board[n] == "X" or game_board[n] == "O":
             print("\nThat place its already taken. Choose another:")
             x_play()
         else:
-            board[n] = "X"
+            game_board[n] = "X"
 
     def o_play():
         n = player_selection()
-        if board[n] == "X" or board[n] == "O":
+        if game_board[n] == "X" or game_board[n] == "O":
             print("\nThat place its already taken. Choose another:")
             o_play()
         else:
-            board[n] = "O"
+            game_board[n] = "O"
 
     def check_result():
         count = 0
         for win in win_comb:
-            if board[win[0]] == board[win[1]] == board[win[2]] == "X":
+            if game_board[win[0]] == game_board[win[1]] == game_board[win[2]] == "X":
                 print("The X Wins!\n")
                 return True
 
-            if board[win[0]] == board[win[1]] == board[win[2]] == "O":
+            if game_board[win[0]] == game_board[win[1]] == game_board[win[2]] == "O":
                 print("The O Wins!\n")
                 return True
         for win in range(9):
-            if board[win] == "X" or board[win] == "O":
+            if game_board[win] == "X" or game_board[win] == "O":
                 count += 1
             if count == 9:
                 print("We got a Tie\n")
