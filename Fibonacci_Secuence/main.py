@@ -1,6 +1,7 @@
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument('-value', type=int, help='Insert value to apply fibonacci sequence')
+parser.add_argument('-n', type=int, help='Insert value to apply fibonacci sequence')
+args = parser.parse_args()
 
 
 def fibonacci_sequence(number):
@@ -18,5 +19,4 @@ def fibonacci_sequence(number):
         return fibonacci_sequence(number - 1) + fibonacci_sequence(number - 2)
 
 
-value = 0
-print(fibonacci_sequence(value))
+print(fibonacci_sequence(args.n))
