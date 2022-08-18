@@ -5,11 +5,12 @@ def tic_tac_toe():
     win_comb = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
 
     def board_draw():
-        print(board[0] + "|" + board[1] + "|" + board[2]+"    "+game_board[0] + "|" + game_board[1] + "|" + game_board[2])
-        print("--------    -----")
-        print(board[3] + "|" + board[4] + "|" + board[5]+"    "+game_board[3] + "|" + game_board[4] + "|" + game_board[5])
-        print("--------    -----")
-        print(board[6] + "|" + board[7] + "|" + board[8]+"    "+game_board[6] + "|" + game_board[7] + "|" + game_board[8])
+        print(" Places     Game board")
+        print(board[0] + "|" + board[1] + "|" + board[2]+"       "+game_board[0] + "|" + game_board[1] + "|" + game_board[2])
+        print("--------       -----")
+        print(board[3] + "|" + board[4] + "|" + board[5]+"       "+game_board[3] + "|" + game_board[4] + "|" + game_board[5])
+        print("--------       -----")
+        print(board[6] + "|" + board[7] + "|" + board[8]+"       "+game_board[6] + "|" + game_board[7] + "|" + game_board[8])
         print()
 
     def player_selection():
