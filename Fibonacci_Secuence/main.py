@@ -19,4 +19,4 @@ def fibonacci_sequence(number):
         return fibonacci_sequence(number - 1) + fibonacci_sequence(number - 2)
 
 
-print(fibonacci_sequence(args.n))
+print(fibonacci_sequence(35))
