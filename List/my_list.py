@@ -9,6 +9,9 @@ class MyList:
         self.node_init = None
         self.index_count = 0
 
+    def empty(self):
+        return self.node_init is None
+
     def add(self, data):
         new_node = Node(data)
         if self.node_init is None:
@@ -65,38 +68,30 @@ class MyList:
             n = n.node_ref
         return False
 
+    def __index__(self, item):
+        n = self.node_init
+        index=0
+        while n.node_data is not item:
+            index += 1
+            n = n.node_ref
+        return index
     def __iter__(self):
         return self
 
+    def __next__(self):
+        pass
+
     def __str__(self):
         n = self.node_init
-        print("[", end="")
+        str_print = "["
         if n is None:
-            return "List has no element"
+            return "[]"
+        elif len == 1:
+            return "["+str(n)+"]"
         else:
-
-            if len == 1:
-                return str(n)+"]"
-            else:
-                pos = 1
-                while n is not None and pos < len(self):
-                    print(str(n.node_data), end=",")
-                    n = n.node_ref
-                    pos += 1
-                return str(n.node_data)+"]"
-
-
-new_list = MyList()
-print(new_list)
-new_list.add(25)
-new_list.add("carlos")
-new_list.add(True)
-print(len(new_list))
-print(new_list)
-new_list[0] = 50
-print(new_list)
-new_list.add("martin")
-print(new_list)
-print(len(new_list))
-print(new_list[3])
-print("martin" not in new_list)
+            pos = 1
+            while n is not None and pos < len(self):
+                str_print += str(n.node_data)+","
+                n = n.node_ref
+                pos += 1
+            return str_print+str(n.node_data)+"]"
