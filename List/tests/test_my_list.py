@@ -61,5 +61,28 @@ class TestMyList(unittest.TestCase):
         new_list = MyList()
         self.assertEqual(str(new_list), "[]")
 
+    def test_exception_index_not_value_in_list(self):
+        with self.assertRaises(ValueError):
+            new_list = MyList()
+            new_list.add(1)
+            new_list.__index__(5)
+
+    def test_exception_set_item_index_out_of_range(self):
+        with self.assertRaises(IndexError):
+            new_list = MyList()
+            new_list.add(1)
+            new_list[3] = 6
+
+    def test_exception_get_item_index_out_of_range(self):
+        with self.assertRaises(IndexError):
+            new_list = MyList()
+            new_list.add(1)
+            new_list[3]
+
+
+
+
+
+
 
 

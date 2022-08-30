@@ -30,10 +30,10 @@ class MyList:
         while i < index+1 and n is not None:
             n = n.node_ref
             i = i + 1
-        if n is None:
-            print("Index out of bound")
-        else:
+        if n is not None:
             return n.node_data
+        else:
+            raise IndexError("list Index ou of range")
 
     def __setitem__(self, index, data):
         if index == 0:
@@ -43,10 +43,10 @@ class MyList:
         while i < index+1 and n is not None:
             n = n.node_ref
             i = i + 1
-        if n is None:
-            print("Index out of bound")
-        else:
+        if n is not None:
             n.node_data = data
+        else:
+            raise IndexError("list assignment index out of range")
 
     def __len__(self):
         if self.node_init is None:
@@ -69,12 +69,16 @@ class MyList:
         return False
 
     def __index__(self, item):
-        n = self.node_init
-        index=0
-        while n.node_data is not item:
-            index += 1
-            n = n.node_ref
-        return index
+        if self.__contains__(item):
+            n = self.node_init
+            index= 0
+            while n.node_data is not item:
+                index += 1
+                n = n.node_ref
+                return index
+        else:
+            raise ValueError(f"{item} is not in the list")
+
     def __iter__(self):
         return self
 
@@ -95,3 +99,7 @@ class MyList:
                 n = n.node_ref
                 pos += 1
             return str_print+str(n.node_data)+"]"
+
+nl=MyList()
+nl.add(2)
+nl[4]
