@@ -4,13 +4,13 @@ from products import products
 app = Flask(__name__)
 
 
-# Testing Route
+# Testing endpoint
 @app.route('/')
 def index():
     return '<h1>FlASK REST API TEST<h1>'
 
 
-# Get Data Routes
+# Get Data
 @app.route('/products')
 def get_products():
     # return jsonify(products)
@@ -26,7 +26,7 @@ def get_product(product_name):
     return jsonify({'message': 'Product Not found'})
 
 
-# Create Data Routes
+# Create Data
 @app.route('/products', methods=['POST'])
 def add_product():
     new_product = {
@@ -39,7 +39,7 @@ def add_product():
     return jsonify({'products': products})
 
 
-# Update Data Route
+# Update Data
 @app.route('/products/<string:product_name>', methods=['PUT'])
 def edit_product(product_name):
     products_found = [product for product in products if product['name'] == product_name]
@@ -54,7 +54,7 @@ def edit_product(product_name):
     return jsonify({'message': 'Product Not found'})
 
 
-# DELETE Data Route
+# DELETE Data
 @app.route('/products/<string:product_name>', methods=['DELETE'])
 def delete_product(product_name):
     products_found = [product for product in products if product['name'] == product_name]
